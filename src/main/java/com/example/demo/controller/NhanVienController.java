@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.NhanVien;
 import com.example.demo.model.request.CreateNhanVienRequest;
+import com.example.demo.model.request.FindNhanVienRequest;
 import com.example.demo.model.response.NhanVienResponse;
 import com.example.demo.service.NhanVienService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,14 @@ public class NhanVienController {
         return new ResponseEntity(nhanVienService.create(createNhanVienRequest), HttpStatus.CREATED);
     }
 
+    // số lượng phần tử trong 1 trang: size
+
+    // trang hiện tại: pageNo
+
     // về nhà làm chức năng getAll tất cả các trường, getAll 1 vài trường, thêm mới 1 bản ghi
+
+    @GetMapping("/nhan-vien/search")
+    public ResponseEntity search(FindNhanVienRequest request) {
+        return new ResponseEntity(nhanVienService.search(request), HttpStatus.OK);
+    }
 }
